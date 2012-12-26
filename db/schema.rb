@@ -14,8 +14,14 @@
 ActiveRecord::Schema.define(:version => 20121225183027) do
 
   create_table "books", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "isbn"
+    t.text     "title"
+    t.text     "author"
+    t.integer  "page"
+    t.text     "description"
+    t.integer  "price"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|

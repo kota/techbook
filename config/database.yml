@@ -8,7 +8,6 @@ development:
   adapter: postgresql
   host: localhost
   port: 5432
-  username: kota
   database: teckkbooks_dev
   pool: 5
   timeout: 5000
@@ -20,6 +19,8 @@ test:
   encoding: utf8
   adapter: postgresql
   database: teckkbooks_test
+  host: localhost
+  port: 5432
   pool: 5
   timeout: 5000
 

@@ -40,3 +40,5 @@ gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'devise'
+
+gem 'amazon-ecs'
