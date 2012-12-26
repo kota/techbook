@@ -4,5 +4,6 @@
     <%= image_tag(book.medium_image_url) %> <%= raw book_level(book)%><br/>
     <%= link_to h(book.title), "/books/#{book.isbn}"%> <%= h(book.author) %>
   </div>
+  <br/>
 <% end %>
 <ul>
