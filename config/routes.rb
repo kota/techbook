@@ -5,8 +5,9 @@ Techbook::Application.routes.draw do
   devise_scope :user do |user|
     delete "/users/sign_out" => "devise/sessions#destroy"
     post 'users/add_book'
+    get '/users' => "users#home"
+    get '/users/home', as: :user_root
     get 'users/:user_name' => "users#home"
-    get 'users/home', as: :user_root
   end
 
   resources :books, only: [:index, :show] do

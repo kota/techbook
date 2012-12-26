@@ -2,8 +2,12 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def home
-    #TODO Githubっぽく/kotaとかで他の人の本を見れるようにする
-    @books = current_user.books
+    if params[:user_name].present?
+      @user = User.find_by_name(params[:user_name])
+      @books = @user.books
+    else
+      @books = current_user.books
+    end
   end
 
   def add_book
