@@ -2,6 +2,18 @@ Techbook::Application.routes.draw do
   root to: "welcome#index"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
+  devise_scope :user do |user|
+    delete "/users/sign_out" => "devise/sessions#destroy"
+    post 'users/add_book'
+    get 'users/:user_name' => "users#home"
+    get 'users/home', as: :user_root
+  end
+
+  resources :books, only: [:index, :show] do
+    collection do
+      post :search
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

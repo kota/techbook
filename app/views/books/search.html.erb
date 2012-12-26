@@ -1,0 +1,10 @@
+<%= form_tag('/books/search', :class => "navbar-form pullleft") do %>
+  <%= text_field_tag('keyword') %>
+  <%= submit_tag('検索') %>
+<% end %>
+<hr>
+<ul class="unstyled">
+<% @books.each do |book| %>
+  <li><%= image_tag(book.medium_image_url) %><%= link_to h(book.title), "/books/#{book.isbn}"%> <%= h(book.author) %></li>
+<% end %>
+<ul>

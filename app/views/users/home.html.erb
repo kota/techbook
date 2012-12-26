@@ -1,0 +1,5 @@
+<ul class="unstyled">
+<% @books.each do |book| %>
+  <li><%= image_tag(book.medium_image_url) %><%= link_to h(book.title), "/books/#{book.isbn}"%> <%= h(book.author) %></li>
+<% end %>
+<ul>
