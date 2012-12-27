@@ -1,5 +1,5 @@
 <%= image_tag(@book.large_image_url) %>
-<p><strong><%= link_to(@book.title,@book.detail_page_url) %></strong></p>
+<p><strong><%= link_to(@book.title,@book.detail_page_url,target: "_blank") %></strong></p>
 <p><%= @book.author %></p>
 
 <ul class="inline">
