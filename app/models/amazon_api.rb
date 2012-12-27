@@ -1,7 +1,7 @@
 class AmazonApi
 
   def self.search_by_keyword(keyword)
-    Amazon::Ecs.item_search(keyword, {response_group: 'Medium', sort: 'salesrank', country: 'jp'})
+    Amazon::Ecs.item_search(keyword, {response_group: 'Medium', sort: 'salesrank', country: 'jp', search_index: 'Books', browse_node: 466298})
   end
 
   def self.search_by_isbn(isbn)
