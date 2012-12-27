@@ -5,6 +5,7 @@ class Book < ActiveRecord::Base
     item_attributes = response_item.get_element('ItemAttributes')
 
     book.isbn = response_item.get('ASIN')
+    book.detail_page_url = response_item.get('DetailPageURL')
     book.author = item_attributes.get('Author')
     book.title = item_attributes.get('Title')
 
