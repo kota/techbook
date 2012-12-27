@@ -14,7 +14,7 @@ class BooksController < ApplicationController
     result = AmazonApi.search_by_keyword(params[:keyword])
     new_books = []
     @books = result.items.map do |item|
-      book = Book.find_by_isbn(item.get_element('ItemAttributes').get('ISBN'))
+      book = Book.find_by_isbn(item.get('ASIN'))
       if book.nil?
         book = Book.new_with_amazon_response(item)
         new_books << book
@@ -22,7 +22,6 @@ class BooksController < ApplicationController
       book
     end
     Book.import(new_books)
-    
   end
 
 end

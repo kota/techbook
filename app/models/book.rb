@@ -4,7 +4,7 @@ class Book < ActiveRecord::Base
     book = Book.new
     item_attributes = response_item.get_element('ItemAttributes')
 
-    book.isbn = item_attributes.get('ISBN')
+    book.isbn = response_item.get('ASIN')
     book.author = item_attributes.get('Author')
     book.title = item_attributes.get('Title')
 
