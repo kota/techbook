@@ -16,6 +16,8 @@ Techbook::Application.routes.draw do
     end
   end
 
+  resources :user_books, only: [:show,:update]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

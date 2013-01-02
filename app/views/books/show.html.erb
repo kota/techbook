@@ -1,47 +1,71 @@
-<%= image_tag(@book.large_image_url) %>
-<p><strong><%= link_to(@book.title,@book.detail_page_url,target: "_blank") %></strong></p>
-<p><%= @book.author %></p>
+<div class="row-fluid">
+  <div class="span6">
+    <%= image_tag(@book.large_image_url) %>
+    <p><strong><%= link_to(@book.title,@book.detail_page_url,target: "_blank") %></strong></p>
 
-<ul class="inline">
-<li>
-<%= button_to("持ってるけど未読", {controller: 'users', action: 'add_book', level: 0, book_id: @book.id}, {class: "btn btn-inverse"}) %>
-</li>
-<li>
-  <% if @user_level == 0 %>
-    <%= image_tag('check.png') %>
-  <% end %>
-</li>
-</ul>
-<ul class="inline">
-<li>
-<%= button_to("読んだ(半分以下)", {controller: 'users', action: 'add_book', level: 1, book_id: @book.id}, {class: "btn btn-danger"}) %>
-</li>
-<li>
-  <% if @user_level == 1 %>
-    <%= image_tag('check.png') %>
-  <% end %>
-</li>
-</ul>
+    <p><%= @book.author %></p>
+  </div>
+  <div class="span6">
+    <ul class="inline">
+      <li>
+      <%= button_to("持ってるけど未読", {controller: 'users', action: 'add_book', level: 0, book_id: @book.id}, {class: "btn btn-inverse"}) %>
+      </li>
+      <li>
+        <% if @user_level == 0 %>
+          <%= image_tag('check.png') %>
+        <% end %>
+      </li>
+      </ul>
+      <ul class="inline">
+      <li>
+      <%= button_to("読んだ(半分以下)", {controller: 'users', action: 'add_book', level: 1, book_id: @book.id}, {class: "btn btn-danger"}) %>
+      </li>
+      <li>
+        <% if @user_level == 1 %>
+          <%= image_tag('check.png') %>
+        <% end %>
+      </li>
+      </ul>
+      
+      <ul class="inline">
+      <li>
+      <%= button_to("全部読んだけどまだいまいち", {controller: 'users', action: 'add_book', level: 2, book_id: @book.id}, {class: "btn btn-warning"}) %>
+      </li>
+      <li>
+        <% if @user_level == 2 %>
+          <%= image_tag('check.png') %>
+        <% end %>
+      </li>
+      </ul>
+      
+      <ul class="inline">
+      <li>
+      <%= button_to("完璧に理解した！", {controller: 'users', action: 'add_book', level: 3, book_id: @book.id}, {class: "btn btn-success"}) %>
+      </li>
+      <li>
+        <% if @user_level == 3 %>
+          <%= image_tag('check.png') %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
 
-<ul class="inline">
-<li>
-<%= button_to("全部読んだけどまだいまいち", {controller: 'users', action: 'add_book', level: 2, book_id: @book.id}, {class: "btn btn-warning"}) %>
-</li>
-<li>
-  <% if @user_level == 2 %>
-    <%= image_tag('check.png') %>
+<div class="row-fluid">
+  <% if @user_book && @user_book.comment.present?%>
+    <div class="span9 hero-unit" > 
+      <p><%= h @user_book.comment %></p>
+    </div>
+  <% else %>
+    <div class="span9">
+      <%= form_for(@user_book) do |f| %>
+          <%= f.text_area('comment',{class: "span12", rows: 4, placeholder:"Leave a comment"}) %>
+          <div class="row-fluid">
+            <div class="span3 offset9">
+              <%= f.submit('Add Comment',{class: "btn btn-success"}) %>
+            </div>
+          </div>
+      <% end %>
+    </div>
   <% end %>
-</li>
-</ul>
-
-<ul class="inline">
-<li>
-<%= button_to("完璧に理解した！", {controller: 'users', action: 'add_book', level: 3, book_id: @book.id}, {class: "btn btn-success"}) %>
-</li>
-<li>
-  <% if @user_level == 3 %>
-    <%= image_tag('check.png') %>
-  <% end %>
-</li>
-</ul>
-
+</div>

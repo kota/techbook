@@ -1,7 +1,11 @@
 <ul class="unstyled">
 <% @books.each do |book| %>
   <div>
-    <%= image_tag(book.medium_image_url) %> <%= raw book_level(book)%><br/>
+    <div style="float:left">
+      <%= image_tag(book.medium_image_url) %>
+    </div>
+    <%= raw user_book(book)%>
+    <br style="clear:both"/>
     <%= link_to h(book.title), "/books/#{book.isbn}"%> <%= h(book.author) %>
   </div>
   <br/>
