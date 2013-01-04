@@ -9,10 +9,14 @@ class Book < ActiveRecord::Base
     book.author = item_attributes.get('Author')
     book.title = item_attributes.get('Title')
 
-    book.small_image_url = response_item.get_element('SmallImage').get('URL')
-    book.medium_image_url = response_item.get_element('MediumImage').get('URL')
-    book.large_image_url = response_item.get_element('LargeImage').get('URL')
+    book.small_image_url = response_item.get_element('SmallImage').get('URL') if response_item.get_element('SmallImage')
+    book.medium_image_url = response_item.get_element('MediumImage').get('URL') if response_item.get_element('MediumImage')
+    book.large_image_url = response_item.get_element('LargeImage').get('URL') if response_item.get_element('LargeImage')
     book
+  end
+
+  def medium_or_no_image_url
+    medium_image_url.nil? ? "/images/noimage.png" : medium_image_url
   end
 
 end
