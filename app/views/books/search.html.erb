@@ -3,8 +3,13 @@
   <%= submit_tag('検索') %>
 <% end %>
 <hr>
-<ul class="unstyled">
 <% @books.each do |book| %>
-  <li style="margin-bottom:10px;" ><%= image_tag(book.medium_or_no_image_url) %><%= link_to h(book.title), "/books/#{book.isbn}"%> <%= h(book.author) %></li>
+  <div class="well">
+    <div style="float:left">
+      <%= image_tag(book.medium_image_url) %>
+    </div>
+    <br style="clear:both"/>
+    <%= link_to h(book.title), "/books/#{book.isbn}"%> <%= h(book.author) %>
+  </div>
 <% end %>
-<ul>
+

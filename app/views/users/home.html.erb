@@ -1,6 +1,6 @@
 <ul class="unstyled">
 <% @books.each do |book| %>
-  <div>
+  <div class="well">
     <div style="float:left">
       <%= image_tag(book.medium_image_url) %>
     </div>
@@ -8,6 +8,5 @@
     <br style="clear:both"/>
     <%= link_to h(book.title), "/books/#{book.isbn}"%> <%= h(book.author) %>
   </div>
-  <br/>
 <% end %>
 <ul>
