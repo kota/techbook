@@ -6,41 +6,42 @@
     <p><%= @book.author %></p>
   </div>
   <div class="span6">
-    <ul class="inline">
-      <li>
-      <%= button_to("持ってるけど未読", {controller: 'users', action: 'add_book', level: 0, book_id: @book.id}, {class: "btn btn-inverse"}) %>
+    <br/>
+    <ul class="inline span12">
+      <li class="span9">
+      <%= button_to("持ってるけど未読", {controller: 'users', action: 'add_book', level: 0, book_id: @book.id}, {class: "btn btn-inverse span9"}) %>
       </li>
       <li>
         <% if @user_level == 0 %>
           <%= image_tag('check.png') %>
         <% end %>
       </li>
-      </ul>
-      <ul class="inline">
-      <li>
-      <%= button_to("読んだ(半分以下)", {controller: 'users', action: 'add_book', level: 1, book_id: @book.id}, {class: "btn btn-danger"}) %>
+    </ul>
+    <ul class="inline span12">
+      <li class="span9">
+      <%= button_to("読んだ(半分以下)", {controller: 'users', action: 'add_book', level: 1, book_id: @book.id}, {class: "btn btn-danger span9"}) %>
       </li>
       <li>
         <% if @user_level == 1 %>
           <%= image_tag('check.png') %>
         <% end %>
       </li>
-      </ul>
+    </ul>
       
-      <ul class="inline">
-      <li>
-      <%= button_to("全部読んだけどまだいまいち", {controller: 'users', action: 'add_book', level: 2, book_id: @book.id}, {class: "btn btn-warning"}) %>
+    <ul class="inline span12">
+      <li class="span9">
+      <%= button_to("読んだけどまだいまいち", {controller: 'users', action: 'add_book', level: 2, book_id: @book.id}, {class: "btn btn-warning span9"}) %>
       </li>
       <li>
         <% if @user_level == 2 %>
           <%= image_tag('check.png') %>
         <% end %>
       </li>
-      </ul>
+    </ul>
       
-      <ul class="inline">
-      <li>
-      <%= button_to("完璧に理解した！", {controller: 'users', action: 'add_book', level: 3, book_id: @book.id}, {class: "btn btn-success"}) %>
+    <ul class="inline span12">
+      <li class="span9">
+        <%= button_to("だいたい理解した", {controller: 'users', action: 'add_book', level: 3, book_id: @book.id}, {class: "btn btn-success span9"}) %>
       </li>
       <li>
         <% if @user_level == 3 %>

@@ -1,4 +1,6 @@
 class Book < ActiveRecord::Base
+  has_many :tags, through: :tag_books
+  has_many :tag_books
   
   def self.new_with_amazon_response(response_item)
     book = Book.new

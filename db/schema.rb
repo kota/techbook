@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130102100943) do
+ActiveRecord::Schema.define(:version => 20130108140049) do
 
   create_table "books", :force => true do |t|
     t.string   "isbn"
@@ -29,6 +29,22 @@ ActiveRecord::Schema.define(:version => 20130102100943) do
   end
 
   add_index "books", ["isbn"], :name => "index_books_on_isbn"
+
+  create_table "tag_books", :force => true do |t|
+    t.integer  "book_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tag_books", ["book_id"], :name => "index_tag_books_on_book_id"
+  add_index "tag_books", ["tag_id"], :name => "index_tag_books_on_tag_id"
+
+  create_table "tags", :force => true do |t|
+    t.integer  "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "user_books", :force => true do |t|
     t.integer  "user_id"
